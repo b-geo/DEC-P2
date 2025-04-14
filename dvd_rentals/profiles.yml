@@ -1,0 +1,24 @@
+dvd_rentals:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: QLZGDCF-SC02516
+      # User/password auth
+      user: BGEO
+      password: c1XA04k2AAAAAA
+      role: accountadmin
+      database: dvd_rentals
+      warehouse: compute_wh
+      schema: transformation
+      threads: 8
+      client_session_keep_alive: False
+    pg:
+      type: postgres
+      host: localhost
+      port: 5432
+      database: staging
+      user: postgres
+      password: postgres
+      threads: 1
+      schema: public
