@@ -1,7 +1,6 @@
 ## Questions
-- is it normal fact PLUS advanced fact or?
-- cdc is a form of incremental, so i'm assuming we don't need an incremental query PLUS cdc?
-- for the transformations, can they still be through dbt but to databricks? 
+- can i hand in thursday?
+- does slowly changing dimensions have to be from staging level or fine at end?
 
 ## PLAN
 - rental from dvd rental, but do it as accumulating
@@ -36,3 +35,13 @@ default:
 - set up databricks and dbt together
 - set up pogres source as docker
 - from docket progres local to airbyte to databricks
+
+# tomorrow
+- technique or two on transformations
+    - probably with the summary fact (snapshot fact)
+- slowly changing dimensions for address, customer, film, staff
+    - use valid from/to
+- on big table like fact but all
+- documentation for readme
+- git branch and pull request
+- inventory store id for rental table

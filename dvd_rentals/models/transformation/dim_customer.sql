@@ -10,7 +10,7 @@ select
     cu.customer_id,
     cu.first_name,
     cu.last_name,
-    concat(cu.first_name, ', ', cu.last_name) as full_name,
+    concat(cu.first_name, ' ', cu.last_name) as full_name,
     cu.email,
     da.address_key,
     cu.store_id,

@@ -10,7 +10,7 @@ select
     st.staff_id,
     st.first_name,
     st.last_name,
-    concat(st.first_name, ', ', st.last_name) as full_name,
+    concat(st.first_name, ' ', st.last_name) as full_name,
     da.address_key,
     st.email,
     st.store_id,

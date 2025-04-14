@@ -14,3 +14,8 @@ models:
         tests:
           - not_null
           - unique
+
+      - name: active
+        description: Active status of staff
+        tests:
+          - not_null
