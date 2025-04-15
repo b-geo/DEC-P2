@@ -1,7 +1,8 @@
 {{
     config(
-        materialized="table",
-        unique_key="rental_id"
+        materialized="incremental",
+        unique_key = ["rental_id"],
+        incremental_strategy = "merge"
     )
 }}
 
@@ -22,7 +23,8 @@ select
     DATE(re.return_date) as return_date,
     fi.film_key,
     inv.store_id,
-    st.staff_key
+    st.staff_key,
+    re.last_update
 from {{ source("db_staging", "rental")}} re
 left join {{ ref("dim_inventory")}} inv
     on {{ dbt_utils.generate_surrogate_key(['re.inventory_id']) }} = inv.inventory_key
@@ -34,5 +36,7 @@ left join {{ ref("dim_staff")}} st
     on {{ dbt_utils.generate_surrogate_key(['re.staff_id']) }} = st.staff_key
 left join pay_agg fp
     on {{ dbt_utils.generate_surrogate_key(['re.rental_id']) }} = fp.rental_key
-
+{% if is_incremental() %}
+    where re.last_update > (select max(last_update) from {{ this }} )
+{% endif %}
 

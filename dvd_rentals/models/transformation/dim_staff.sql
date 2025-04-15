@@ -1,7 +1,8 @@
 {{
     config(
-        materialized="table",
-        unique_key="staff_id"
+        materialized="incremental",
+        unique_key = ["staff_id"],
+        incremental_strategy = "merge"
     )
 }}
 
@@ -14,7 +15,11 @@ select
     da.address_key,
     st.email,
     st.store_id,
-    st.active::boolean as active
+    st.active::boolean as active,
+    st.last_update,
 from {{ source("db_staging", "staff")}} st
 left join {{ ref("dim_address")}} da
     on st.address_id = da.address_id
+{% if is_incremental() %}
+    where st.last_update > (select max(staff.last_update) from {{ this }} as staff)
+{% endif %}

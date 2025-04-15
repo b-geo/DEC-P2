@@ -1,7 +1,8 @@
 {{
     config(
-        materialized="table",
-        unique_key="payment_id"
+        materialized="incremental",
+        unique_key = ["payment_id"],
+        incremental_strategy = "merge"
     )
 }}
 
@@ -13,9 +14,13 @@ select
     DATE(pa.payment_date) as payment_date,
     dd.quarter_of_year,
     {{ dbt_utils.generate_surrogate_key(['pa.staff_id']) }} as staff_key,
-    pa.amount
+    pa.amount,
+
 from {{ source("db_staging", "payment")}} pa
 left join {{ source("db_staging", "rental")}} re
     on pa.rental_id = re.rental_id
 left join {{ ref("dim_date")}} dd
     on DATE(pa.payment_date) = dd.date_day
+{% if is_incremental() %}
+    where DATE(pa.payment_date) > (select max(payment_date) from {{ this }} )
+{% endif %}
