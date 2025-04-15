@@ -46,8 +46,8 @@ default:
 - git branch and pull request
 - inventory store id for rental table
 
-- incremental WHERE MERGE
-- one report for most recent year monthly - monthyl sales rolling average
+- [done] incremental WHERE MERGE
+- [done] one report for most recent year monthly - monthyl sales rolling average
 - readme
 - host
 - one big table
