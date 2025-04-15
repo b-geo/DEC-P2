@@ -8,7 +8,7 @@
 select
     {{ dbt_utils.generate_surrogate_key(['pa.payment_id']) }} as payment_key, 
     pa.payment_id,
-    {{ dbt_utils.generate_surrogate_key(['pa.payment_id']) }} as rental_key,
+    {{ dbt_utils.generate_surrogate_key(['pa.rental_id']) }} as rental_key,
     {{ dbt_utils.generate_surrogate_key(['pa.customer_id']) }} as customer_key,
     DATE(pa.payment_date) as payment_date,
     dd.quarter_of_year,

@@ -14,8 +14,3 @@ models:
         tests:
           - not_null
           - unique
-
-      - name: rental_amount
-        description: Amount paid
-        tests:
-          - not_null

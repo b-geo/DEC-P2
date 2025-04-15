@@ -15,8 +15,8 @@ models:
           - not_null
           - unique
 
-      - name: film_id
-        description: Film id
+      - name: film_key
+        description: Film key
         tests:
           - not_null
 
