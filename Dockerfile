@@ -11,5 +11,4 @@ RUN dbt clean --profiles-dir /usr/app/dvd_rentals
 RUN dbt deps
 RUN dbt compile --profiles-dir /usr/app/dvd_rentals
 
-
 CMD ["dbt", "run"]

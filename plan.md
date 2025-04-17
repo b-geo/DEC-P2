@@ -1,6 +1,7 @@
 ## Questions
 - can i hand in thursday?
 - does slowly changing dimensions have to be from staging level or fine at end?
+- if i am running postgres, airbyte and dbt on ec2 is it better to compose?
 
 ## PLAN
 - rental from dvd rental, but do it as accumulating
