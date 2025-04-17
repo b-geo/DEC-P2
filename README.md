@@ -7,6 +7,7 @@ This is an ETL pipeline using the DVD Rental Database. The DVD Rental Database b
 - Airbyte
 - Snowflake
 - Docker
+- dbt
 
 ## My Implementation
 
@@ -19,10 +20,11 @@ Airbyte Cloud orchestrates the ingestion of data from the source PostgreSQL data
 ![images/airbyte.png](images/airbyte.png)
 
 ### Snowflake
-Snowflake is configured with a "DVD_RENTALS" database, which houses three schemas: "STAGING", "TRANSFORMATION" and "PRESENATION". The source database is initially loaded into "STAGING".
+Snowflake is configured with a "DVD_RENTALS" database, which houses two schemas: "STAGING" and "MARTS". The source database is initially loaded into "STAGING".
 
-### Docker
-For ease of deployment, dbt is run via a Docker container. dbt interfaces with the Snowflake database to generate fact and dimension tables throughout the 
+![images/snowflake.png](images/snowflake.png)
+### Docker and dbt
+For ease of deployment, dbt is run via a Docker container. In my case, I am running dbt with AWS EC2, ECR and ECS. With the help of dbt, the "STAGING" tables in Snowflake are transformed into fact and dimension tables in "MARTS". dbt is used to run a number of data tests via the `.yml` files located in the models folder. dbt also employs an incremental load for all tables in "MARTS". 
 
 ## Solution architecture
 The default implementation of this project is a Docker image deployed to Amazon Web Services (AWS).
