@@ -50,5 +50,5 @@ default:
 - [done] one report for most recent year monthly - monthyl sales rolling average
 - readme
 - host
-- one big table
+- [done]one big table
 - slowly changing dimensions

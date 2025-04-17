@@ -8,8 +8,13 @@ This is an ETL pipeline using the DVD Rental Database. The DVD Rental Database b
 - Snowflake
 - Docker
 
+## My Implementation
+
+### PostgreSQL and pgAdmin
+The PostgreSQL server for this project is set up via AWS's RDS. Once this has been done, pgAdmin is used to connect to the PostgreSQL server and the `dvd_rental.tar` is used to restore the DVD Rental database on the server.
+
 ### PostgreSL
-THe PostgreSQL server for this project is set up via AWS's RDS. Once this has been done, pgAdmin is used to connect to the PostgreSQL server and the `dvd_rental.tar` is used to restore the DVD Rental database on the server.
+Airbyte Cloud orchestrates the . Once this has been done, pgAdmin is used to connect to the PostgreSQL server and the `dvd_rental.tar` is used to restore the DVD Rental database on the server.
 
 
 ## Solution architecture
@@ -38,6 +43,7 @@ The default implementation of this project is a Docker image deployed to Amazon 
 ![images/er_diagram.png](images/er_diagram.png)
 
 ## How I would improve this project
-- More tests
-- Logging to S3 or a RDS
-- Slowly Changing Dimension Type 2
+- More tests with dbt
+- Logging to S3 or RDS
+- Slowly Changing Dimension Type 2 (just didn't get time)
+- More documentation within my SQL queries

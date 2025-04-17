@@ -22,6 +22,7 @@ select
     DATE(re.rental_date) as rental_date,
     DATE(re.return_date) as return_date,
     fi.film_key,
+    cu.customer_key,
     inv.store_id,
     st.staff_key,
     re.last_update
