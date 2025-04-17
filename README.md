@@ -13,9 +13,16 @@ This is an ETL pipeline using the DVD Rental Database. The DVD Rental Database b
 ### PostgreSQL and pgAdmin
 The PostgreSQL server for this project is set up via AWS's RDS. Once this has been done, pgAdmin is used to connect to the PostgreSQL server and the `dvd_rental.tar` is used to restore the DVD Rental database on the server.
 
-### PostgreSL
-Airbyte Cloud orchestrates the . Once this has been done, pgAdmin is used to connect to the PostgreSQL server and the `dvd_rental.tar` is used to restore the DVD Rental database on the server.
+### Airbyte
+Airbyte Cloud orchestrates the ingestion of data from the source PostgreSQL database to Snowlake. Change Data Capture (CDC) is employed on all tables to allow for an incremental update of the source database.
 
+![images/airbyte.png](images/airbyte.png)
+
+### Snowflake
+Snowflake is configured with a "DVD_RENTALS" database, which houses three schemas: "STAGING", "TRANSFORMATION" and "PRESENATION". The source database is initially loaded into "STAGING".
+
+### Docker
+For ease of deployment, dbt is run via a Docker container. dbt interfaces with the Snowflake database to generate fact and dimension tables throughout the 
 
 ## Solution architecture
 The default implementation of this project is a Docker image deployed to Amazon Web Services (AWS).
