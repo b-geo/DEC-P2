@@ -9,6 +9,5 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN dbt clean --profiles-dir /usr/app/dvd_rentals
 RUN dbt deps
-RUN dbt compile --profiles-dir /usr/app/dvd_rentals
 
-CMD ["dbt", "run"]
+CMD ["dbt", "build"]
