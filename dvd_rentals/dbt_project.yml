@@ -34,6 +34,6 @@ models:
     transformation:
       +materialized: table
       +schema: transformation
-    target:
+    presentation:
       +materialized: table
-      +schema: target
+      +schema: presentation

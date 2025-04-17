@@ -1,7 +1,8 @@
 {{
     config(
-        materialized="table",
-        unique_key="customer_id"
+        materialized="incremental",
+        unique_key = ["customer_id"],
+        incremental_strategy = "merge"
     )
 }}
 
@@ -14,7 +15,11 @@ select
     cu.email,
     da.address_key,
     cu.store_id,
-    cu.active::boolean as active
+    cu.active::boolean as active,
+    cu.last_update
 from {{ source("db_staging", "customer")}} cu
 left join {{ ref("dim_address")}} da
     on cu.address_id = da.address_id
+{% if is_incremental() %}
+    where cu.last_update > (select max(customer.last_update) from {{ this }} as customer)
+{% endif %}

@@ -46,3 +46,10 @@ default:
 - documentation for readme
 - git branch and pull request
 - inventory store id for rental table
+
+- [done] incremental WHERE MERGE
+- [done] one report for most recent year monthly - monthyl sales rolling average
+- readme
+- host
+- [done]one big table
+- slowly changing dimensions

@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fact_rental
+    columns:
+      - name: rental_key
+        description: The surrogate key of the rental_id
+        tests:
+          - not_null
+          - unique
+      
+      - name: rental_id
+        description: The natural key
+        tests:
+          - not_null
+          - unique
