@@ -30,7 +30,8 @@ For ease of deployment, dbt is run via a Docker container. In my case, I am runn
     ![images/ecr.png](images/ecr.png)
 - **ECS** to run the Docker image. This uses an **EC2** instance as the infrastructure.
     ![images/ecs.png](images/ecs.png)
-- **S3** to store a `.env` file containing environment variables.
+ - **dbt** handles dependencies and relationships of queries 
+    ![images/dag.png](images/dag.png)
 
 ### Entity Relationship Diagram
 
